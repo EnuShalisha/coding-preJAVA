@@ -10,7 +10,7 @@ public class Ex04if {
 		int a=sc.nextInt();
 		String s;
 		s="2와 3의 배수가 아님";
-		if(a%2==0)
+		/*if(a%2==0)
 		{if(a%3==0) {
 			s="2이면서 3의 배수임";
 		}
@@ -20,7 +20,17 @@ public class Ex04if {
 		}
 		else if(a%3==0) {
 			s="3의 배수임";
+		}*/
+		if(a%2==0&&a%3==0) {
+			s="2와 3의 배수";
+		}else if(a%2==0) {
+			s="2의 배수";
+		}else if(a%3==0) {
+			s="3의 배수";
+		}else {
+			s="2도 3도 아님";
 		}
+		
 		System.out.println(s);
 		
 		sc.close();
