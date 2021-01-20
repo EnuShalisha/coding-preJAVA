@@ -43,5 +43,5 @@ public class HW8 {
 		System.out.printf("학번    이름 중간고사 기말고사 출석점수 레포트 합산점수 학점\n %d  %s  %d  %d  %d  %d  %d  %c"
 				, a, b, c, d, e, f, g, h);
 	}
-
+//001
 }
