@@ -12,7 +12,7 @@ public class AD07 {
 			a=sc.nextInt();}
 		while(a<0);
 		//총 자리 수 계산, 맨 앞 자리 배수 저장
-		int count=1; int b=0, c=0;
+		int count=1; int b=0, c=1;
 		while(a-c>=0){
 			c=c*10;
 			b++;

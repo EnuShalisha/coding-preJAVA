@@ -9,7 +9,7 @@ public class AD02 {
 		System.out.println("수 ? ");
 		int n=sc.nextInt();
 		int a=1, t=10;
-		while(n-t>0) {
+		while(n-t>=0) {
 			t=t*10;
 			a++;
 		}
