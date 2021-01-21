@@ -14,7 +14,7 @@ public class Ex06 {
 		String op = sc.next();
 		
 		String result;
-		
+		//if(op=="+") 식으로 문자열 비교는 불가능함
 		switch(op)
 		{case "+": result=a+"+"+b+"="+(a+b); break;
 		case "-": result=a+"-"+b+"="+(a-b); break;
