@@ -18,7 +18,7 @@ public class AD09 {
 			System.out.printf("%d : 소수가 아님", a);
 		else
 			System.out.printf("%d : 소수임", a);
-
+		sc.close();
 	}
 
 }

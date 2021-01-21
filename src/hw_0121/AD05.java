@@ -13,12 +13,11 @@ public class AD05 {
 			temp=total/grade;
 			System.out.printf("%d원권/개수 : %d\n", grade, temp);
 			total-=temp*grade;
-			temp=0;
 			grade/=5;
+			
 			temp=total/grade;
 			System.out.printf("%d원권/개수 : %d\n", grade, temp);
 			total-=temp*grade;
-			temp=0;
 			grade/=2;
 		}
 		sc.close();
