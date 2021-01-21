@@ -21,7 +21,7 @@ public class Ex02wh {
 			}
 			System.out.printf("1부터 %d까지의 합은 %d입니다.", a, s);
 		}
-		//test2
+		
 		sc.close();
 
 	}
