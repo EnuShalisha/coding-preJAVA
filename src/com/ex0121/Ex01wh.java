@@ -19,6 +19,7 @@ public class Ex01wh {
 			System.out.println(n);
 		}
 		System.out.println("결과: "+s);
+		//test4
 	}
 
 }
