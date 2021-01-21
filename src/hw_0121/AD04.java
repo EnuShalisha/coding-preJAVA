@@ -17,6 +17,7 @@ public class AD04 {
 			b=t;
 			count++;
 		}
+		sc.close();
 
 	}
 

@@ -20,6 +20,7 @@ public class AD03 {
 		}
 		System.out.println("GCD(최대공약수) "+d);
 		System.out.println("LCM(최소공약수) "+(a/d*b/d)*d);
+		sc.close();
 	}
 
 }

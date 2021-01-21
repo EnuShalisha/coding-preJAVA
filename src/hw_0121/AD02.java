@@ -14,6 +14,7 @@ public class AD02 {
 			a++;
 		}
 		System.out.printf("%d은 %d자리 정수", n, a);
+		sc.close();
 	}
 
 }
