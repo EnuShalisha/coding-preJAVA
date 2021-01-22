@@ -19,7 +19,7 @@ public class AD08 {
 				a=a/b;
 				if(a!=1) 
 					System.out.print("*");
-				//b=1;
+				b=1;
 				}
 			}
 		sc.close();
