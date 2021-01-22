@@ -18,7 +18,5 @@ public class Ex09 {
 		}
 		System.out.println("결과: "+b);
 		sc.close();
-
 	}
-
 }
