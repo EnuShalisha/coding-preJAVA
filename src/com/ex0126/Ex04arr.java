@@ -7,8 +7,7 @@ public class Ex04arr {
 		char n='A';
 		for(int i=0; i<5; i++) {
 			for(int j=4; j>-1; j--) {
-				arr[j][i]=n;
-				n++;
+				arr[j][i]=n++;
 			}
 		}
 		for(char aa[]:arr) { 
