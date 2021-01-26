@@ -33,6 +33,12 @@ public class Exam02 {
 		
 		}
 			sc.close();
+			
+			/*int a[];
+			// a[0]=10; a 정의 x, 컴파일 오류
+
+			int a[]=null; // 메모리 할당 x, 주소가 null 
+			a[0]=10; // nullpointerexception 런타임 오류*/
 	}
 
 }
