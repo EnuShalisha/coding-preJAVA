@@ -23,6 +23,12 @@ public class Ex04 {
 		final int ID=1; // 전부 대문자
 		// ID=3; 컴파일 에러
 		// Math.PI=1.9; 컴파일에러
+		
+		Calculator c1 = new Calculator();
+		c1.info();
+		
+		User u1 = new User();
+		u1.info();
 
 	}
 

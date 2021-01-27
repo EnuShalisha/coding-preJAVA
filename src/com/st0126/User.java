@@ -1,6 +1,6 @@
 package com.st0126;
 
-public class User {
+public class User implements Promise{ // 여러개 상속 가능
 	String userName;
 	int level;
 	
@@ -30,4 +30,8 @@ public class User {
 	}
 	
 	//constructor 생성자
+	
+	public void info() {
+		System.out.println("Personal Info");
+	}
 }
