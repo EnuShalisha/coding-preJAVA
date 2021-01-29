@@ -8,6 +8,8 @@ public class ScoreVO {
 		private int eng;
 		private int mat;
 		
+		
+		
 		public String getHak() {
 			return hak;
 		}

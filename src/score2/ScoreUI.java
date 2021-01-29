@@ -45,8 +45,9 @@ public class ScoreUI {
 		vo.setMat(sc.nextInt());
 		
 		//ss.append(vo);  배열에 객체 저장
-		if(ss.append(vo)==-1) // 질문 1. 왜 디버깅을하면 여기서 ss.append로 넘어가는가?
-	
+		int n=ss.append(vo);
+		if(n==-1) // 질문 1(s). 왜 디버깅을하면 여기서 ss.append로 넘어가는가?
+	//위와 같음 - 배열에 저장하고 시작함
 			System.out.println("인원 초과로 추가 불가");
 		else System.out.println("데이터 등록 완료");
 	}

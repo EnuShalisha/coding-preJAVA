@@ -1,3 +1,6 @@
+//scoreui는 score에 강한 의존관계
+//score 없는 ui는 없다
+
 package score2;
 //목적: 입력정보를 주기억장치에 저장
 public class Score {
