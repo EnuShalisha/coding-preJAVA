@@ -38,4 +38,6 @@ public class Score {
 		System.out.print(vo.mat+"\t");
 		System.out.println(vo.grade((int)vo.ave()));
 	}
+	
+	//sc.close(); 쓰지 않는다!! 다른 클래스에서 선언됐을 때 입력을 못함!
 }
