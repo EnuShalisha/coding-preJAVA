@@ -11,17 +11,18 @@ public class ScoreUI {
 		
 		while(true) {
 			do {
-				System.out.print("1. 등록 2. 수정 3. 검색 4. 리스트 5. 종료 => ");
+				System.out.print("1. 등록 2. 수정 3. 검색 4. 리스트 5. 삭제 6. 종료 => ");
 				ch=sc.nextInt();
-			}while(ch<1||ch>5);
+			}while(ch<1||ch>6);
 			
-			if(ch==5) return;
+			if(ch==6) return;
 			
 			switch(ch) { // 여기 스위치에 해당되는 메소드들은 일단 ui에 위치
 			case 1:input(); break;
 			case 2:update(); break;
 			case 3:findByHak(); break;
 			case 4:list(); break;
+			case 5:remove(); break;
 			}
 		}
 	}
@@ -96,6 +97,50 @@ public class ScoreUI {
 	
 	public void update() {
 		System.out.println("\n데이터 수정..");
+		
+		String hak;
+		System.out.print("수정할 학번? ");
+		hak=sc.next();
+		ScoreVO vo = ss.readScore(hak);
+		
+		if(vo==null) {
+			System.out.println("등록된 정보가 없음\n");
+			return;
+		}
+		
+		System.out.print("학번? ");
+		vo.setHak(sc.next());
+		
+		System.out.print("이름?");
+		vo.setName(sc.next());
+		
+		System.out.print("국어?");
+		vo.setKor(sc.nextInt());
+		
+		System.out.print("영어?");
+		vo.setEng(sc.nextInt());
+		
+		System.out.print("수학?");
+		vo.setMat(sc.nextInt());
+		
+		System.out.println("데이터 수정 완료");
+		
+	}
+	
+	public void remove() {
+		System.out.println("\n데이터 삭제..");
+		
+		String hak;
+		System.out.print("수정할 학번? ");
+		hak=sc.next();
+		
+		if(ss.remove(hak)==false) {
+			System.out.println("등록된 정보가 없음\n");
+			return;
+		}
+		
+		System.out.println("데이터 삭제 완료");
+		
 	}
 	
 }

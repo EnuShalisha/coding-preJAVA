@@ -39,7 +39,9 @@ public class Pw2nd {
 		return false;
 	}
 	
-	public void reset() {
-		
+	public static void remove(int sw, int pw) {
+		int j=sw%10;
+		int i=(sw-j)/10;
+		list[i][j]=null;
 	}
 }

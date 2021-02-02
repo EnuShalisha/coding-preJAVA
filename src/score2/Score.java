@@ -40,4 +40,19 @@ public class Score {
 		// private였던 list를 불러옴
 	}
 	
+
+public boolean remove(String hak) {
+	for(int i=0; i<count; i++) {
+		ScoreVO vo = list[i]; // 임의의 v 인스턴스로 리스트를 불러옴
+		if(vo.getHak().equals(hak)) {
+			for(int j=i; j<count-1; j++) {
+				list[j] = list[j+1];
+			}
+			list[count-1]=null;
+			count--;
+			return true;
+			}
+}
+	return false;
+}
 }
