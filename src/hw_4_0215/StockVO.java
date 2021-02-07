@@ -1,7 +1,7 @@
 package hw_4_0215;
 
 public class StockVO {
-	private boolean 카드;
+	
 	private int 재고;
 	private String 종류;
 	private int[] 음료리스트;

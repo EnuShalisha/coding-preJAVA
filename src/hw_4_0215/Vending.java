@@ -8,8 +8,11 @@ public class Vending {
 	public void 음료 등록(String 음료) {
 		if 음료 있어
 			수정 들어갈까?
-			if yes	수정 메소드
-			else 이미 존재해 리턴
+			if yes	
+			{수정 메소드
+			리턴}
+			else {이미 존재해 
+			리턴}
 		}
 		set 음료
 		가격 얼마?
