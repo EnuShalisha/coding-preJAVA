@@ -58,7 +58,7 @@ public class Ex07 {
 				}
 				
 				//다운스케일 상태에서
-				//int x=(Demo7)(ob.a); ob.a가 (demo7)보다 연산 우선순위가 더 앞서기때문에 ob.a에서 에러 발생
+				//int x=(Dㄴemo7)(ob.a); ob.a가 (demo7)보다 연산 우선순위가 더 앞서기때문에 ob.a에서 에러 발생
 				int x=((Demo7)ob).a;
 				System.out.println(x);
 		
