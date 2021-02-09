@@ -4,6 +4,8 @@ public class Vending {
 	
 	private stockVO vo;
 	
+	//1. 음료 등록 2. 음료 삽입 3. 음료 수정 4. 음료 삭제 5. 잔돈 투입 6. 비밀번호 설정
+	
 	
 	public void 음료 등록(String 음료) {
 		if 음료 있어
