@@ -1,10 +1,27 @@
 package hw_4_0215;
 
-public class StockVO {
+public class StockVO extends moneyVO{
 	
-	private int 재고;
-	private String 종류;
-	private int[] 음료리스트;
-	private int[] 잔돈(잔돈은 100원/10원만);
-	private String 비밀번호;
+	private String name;
+	private int price;
+	private int stock;
+	
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
 }

@@ -18,7 +18,7 @@ public class Ex07 {
 		}
 
 	}
-
+//checked는 exception unchecked는 runtimeexception
 class LoginException extends Exception{
 
 	private static final long serialVersionUID = 1L; // 직렬화 나중에 배움
