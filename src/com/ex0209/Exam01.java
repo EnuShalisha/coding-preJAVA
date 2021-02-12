@@ -21,6 +21,7 @@ public class Exam01 {
 			char c=sc.next().charAt(0);
 			t.operation(a, b, c);
 			System.out.println("연산 완료");
+			sc.close();
 			break;
 		}
 		catch (IOException e) {
@@ -68,5 +69,8 @@ class Extest1 {
 		} catch (ArithmeticException e) {
 			throw e;
 		} 
+		catch (Exception e) {
+			throw e;
 		}
 	}
+}
