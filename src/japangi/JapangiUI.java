@@ -7,8 +7,45 @@ import java.util.Scanner;
 public class JapangiUI {
 	private Stock stock = new Stock(); // 스톡 생성자는 한번만 선언해야하니 조심하세요
 	private int minimum=300;//자동 반환금액 초기값
+	private int input=800;
 	
-	//음료 등록 중 예외처리입니다.
+	public void dealing() {
+		System.out.println("음료 거래를 시작합니다.");
+		showMenu();
+		System.out.println("결제 수단을 선택하세요.");
+		//if 1이면 bycash, 2번이면 bycard로 갑니다.
+		
+	}
+	
+	public void byCash() {
+		System.out.println("다음을 선택하세요.");
+		for(StockVO vo:stock.listStock()) {
+			int idx=stock.listStock().indexOf(vo)+1;
+			System.out.priㄴnt(idx+"."+vo.getName()+"   ");}
+		int other=stock.listStock().size()+1;
+		System.out.println(other+". 추가투입"+(other+1)+".종료");	
+		
+		
+	}
+	
+	public void showMenu() {
+		System.out.println("자판기 메뉴");
+		System.out.println("음료\t가격\t가능\t품절");
+		for(StockVO vo:stock.listStock()) {
+			System.out.println(vo.getName()+"\t"+vo.getPrice()+"\t"+stock.available(input, vo)+"\t"+stock.soldout(vo));
+		}
+		System.out.println();
+	}
+	
+	public void dealingStatus() {
+		System.out.println("판매 현황");
+		System.out.println("음료\t가격\t재고\t판매량\t판매수익");
+		for(StockVO vo:stock.listStock()) {
+			System.out.println(vo);
+		}
+		System.out.println();
+	}
+	
 	public void insert() {
 		
 		try(Scanner sc=new Scanner(System.in)) {
@@ -52,14 +89,9 @@ public class JapangiUI {
 	
 	
 	//판매현황입니다.
-	public void dealingStatus() {
-		System.out.println("판매 현황");
-		System.out.println("음료\t가격\t재고\t판매량\t판매수익");
-		for(StockVO vo:stock.listStock()) {
-			System.out.println(vo);
-		}
-		System.out.println();
-	}
+	
+	
+	
 }
 
 

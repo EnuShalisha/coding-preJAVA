@@ -7,6 +7,10 @@ public class StockVO {
 	private int sales;
 	private int revenue;
 	
+	public StockVO(String name) {
+		this.name=name;
+	}
+	
 	public StockVO(String name, int price, int stock) {
 		this.name=name; this.price=price; this.stock=stock;
 	}

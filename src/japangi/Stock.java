@@ -104,11 +104,20 @@ public class Stock implements Source {
 		return list;
 	}
 
+	public String soldout(StockVO vo) {
+		String s="";
+		if(vo.getStock()==0)
+			s="Ç°Àý";
+		return s;
+	}
+
+	public String available(int input, StockVO vo) {
+		String s="X";
+		if(input>=vo.getPrice())
+			s="O";
+		return s;
+	}
 	
-
-
-	
-
 
 
 }
