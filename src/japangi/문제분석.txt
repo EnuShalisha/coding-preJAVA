@@ -1,0 +1,94 @@
+문제 분석
+
+1. 음료 거래->금액, 판매// 2.  거래 내역->판매 3.  잔돈 반환->금액 4. 판매 현황-재고 
+5.  재고 등록->재고 6.  재고 수정->재고 7.  재고 삭제->재고 8.  잔돈 채우기->금액 9.  종료 
+
+	1.stockVO
+		(private int) price, stock 
+		(private String) name
+		(private int) minimum (음료 최소값)
+	
+	2.moneyVO (자판기 내 잔돈, 손님 잔돈) 
+		각각 잔돈들(private int) thousand, f-hundred, hundred, fifty, ten
+		<-onenumberexception (예외처리)
+		동전 합계(private int) total=thousand*1000+f-hundred*500+hundred*100+fifty*50+ten*10+one
+		 자판기 원래 잔돈 private int stock=total
+		 사용자가 넣은 잔돈 private int input=0
+		 카드번호 private String cardnum = null//(번호 네자리!)예외로 나머지 해결
+		3) 투입 금액(private int) input 
+		=(thousand*1000+f-hundred*500+hundred*100+fifty*50+ten*10+one)-a
+
+
+		-.손님 잔돈: 
+		
+	3.dealingVO extends stockVO
+		1.음료 이름: name from stockVO
+		2.음료 가격: price from stockVO
+		3.판매량: private int sales
+		4.판매금액: private int revenue = sales*price
+		5.판매시간: private systemdate(?) date
+		6.카드 번호 입력: private String cardnumber
+		7.카드 카운트: private boolean cardcount
+		8.판매 수단: private String salesby
+		@override toString (date+name+price+salesby)
+		-판매현황
+		음료명 | 가격 | 재고 | 판매량 | 판매금액 //표 참고 or 구체적 수치 단톡에
+		사이다			
+		콜라		
+		미란다	
+		-거래내역 /예시
+		
+		거래내역
+	   	2021-02-07 12:28 사이다 2개 2000원 현금
+		2021-02-07 12:29 콜라 2개 2000원 현금
+		2021-02-07 12:30 콜라 1개 2000원 카드
+		
+	<<기능>>	
+	
+	4.Stock
+		private List<StockVO vo>list = new ArrayList<>()
+		public boolean insertDrink(StockVO vo)
+		 public stockVO readStock (String name) //name: 음료명
+		public int registerPrice(StockVO vo)
+		public int registerStock(StockVO vo)
+		public int minimum(StockVO vo)
+		public boolean deleteStock(String name)
+		
+		
+		-재고vo에서 toString 오버라이딩 해놓기!
+		@override toString (name+price+stock+sales+revenue)
+		
+	5.Dealing
+		private List<dealingVO vo>list = new ArrayList<>()
+		public boolean readlist
+		public List<DealingVO> dealingStatus();
+		
+		
+	6.Money
+		 public boolean inputchange(MoneyVO vo)
+		 public boolean returnchange(MoneyVO vo)
+		
+		 1) 생성자 initialize();
+		 2) initialize: 각 동전들 10개씩, total에 16600원 입력
+	
+	7.login?(어디에 넣을지 미정)
+		private int password;
+		public boolean login(int password)- {if(this.password==password)
+		{return true;}
+		return false;}	
+	
+	<<UI>>	
+	
+	구매자 메뉴(Ui)
+	
+	음료 거래->금액, 판매// 2.  거래 내역->판매 3.  잔돈 반환->금액 4.  판매자 모드로i/ 5.  종료 
+	판매자 메뉴(superUi) 
+	
+	1. 음료 거래->금액, 판매// 2.  거래 내역->판매 3.  잔돈 반환->금액 4. 판매 현황-재고 
+	5.  재고 등록->재고 6.  재고 수정->재고 7.  재고 삭제->재고 8.  잔돈 채우기->금액 9.  종료 
+	
+	//UI menu의 경우 수업시간에 했던 loginUI 방법과 성호님이 생각한 방법 두가지가 있습니다.
+	
+	
+	
+	
