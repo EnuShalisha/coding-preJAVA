@@ -7,9 +7,9 @@ import java.util.Scanner;
 public class JapangiUI {
 	private Stock stock = new Stock(); // 스톡 생성자는 한번만 선언해야하니 조심하세요
 	private int minimum=300;//자동 반환금액 초기값
-	private int input=800;
+	private int change=0;
 	
-	public void dealing() {
+	public void beveragedeal() {
 		System.out.println("음료 거래를 시작합니다.");
 		showMenu();
 		System.out.println("결제 수단을 선택하세요.");
@@ -17,13 +17,48 @@ public class JapangiUI {
 		
 	}
 	
+	
+	public void selectMenu(int by) {
+		try(Scanner sc=new Scanner(System.in)){
+			StockVO vo=null;
+			
+			aa:
+			while(true) {
+			
+				System.out.println("원하시는 항목을 선택하세요.");
+			
+				for(StockVO v:stock.listStock()) {
+					int idx=stock.listStock().indexOf(v)+1;
+					System.out.print(idx+"."+v.getName()+"   ");}
+				int other=stock.listStock().size()+1;
+				if(by==1) {
+					System.out.println(other+". 추가투입"+(other+1)+".종료");}
+				else {
+					System.out.println((other+1)+".종료");}
+				
+				int n=sc.nextInt();
+				vo=stock.listStock().get(n-1);
+				
+				if(vo!=null) {
+					System.out.println(vo.getName());
+					break;}
+				else if(n==other)	{
+					//insertchange();
+					System.out.println("추가 투입 완료되었습니다.");
+					continue aa;}
+				else if(n==(other+1)) 	return;	
+			
+				else {
+					System.out.println("잘못 입력하셨습니다.");
+					continue aa;}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
 	public void byCash() {
-		System.out.println("다음을 선택하세요.");
-		for(StockVO vo:stock.listStock()) {
-			int idx=stock.listStock().indexOf(vo)+1;
-			System.out.priㄴnt(idx+"."+vo.getName()+"   ");}
-		int other=stock.listStock().size()+1;
-		System.out.println(other+". 추가투입"+(other+1)+".종료");	
+		
 		
 		
 	}
@@ -32,7 +67,7 @@ public class JapangiUI {
 		System.out.println("자판기 메뉴");
 		System.out.println("음료\t가격\t가능\t품절");
 		for(StockVO vo:stock.listStock()) {
-			System.out.println(vo.getName()+"\t"+vo.getPrice()+"\t"+stock.available(input, vo)+"\t"+stock.soldout(vo));
+			System.out.println(vo.getName()+"\t"+vo.getPrice()+"\t"+stock.available(change, vo)+"\t"+stock.soldout(vo));
 		}
 		System.out.println();
 	}
@@ -44,6 +79,17 @@ public class JapangiUI {
 			System.out.println(vo);
 		}
 		System.out.println();
+	}
+	
+	public void returnchanges() {
+		int a=123455678;
+		int[] list={1000, 500, 100, 50, 10};
+		for(int i:list) {
+			
+			int b=a/i;
+			
+		}
+		
 	}
 	
 	public void insert() {
