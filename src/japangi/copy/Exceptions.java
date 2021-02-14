@@ -1,4 +1,4 @@
-package japangi;
+package japangi.copy;
 // 사용자지정 예외문 만들어놓은 것
 public class Exceptions {
 

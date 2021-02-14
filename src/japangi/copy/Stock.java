@@ -1,4 +1,4 @@
-package japangi;
+package japangi.copy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,10 +106,8 @@ public class Stock implements Source {
 	public String soldout(StockVO vo) {
 		String s = "";
 		if (vo.getStock() == 0)
-			s = "X";
-		else {
-			s="O";
-		}
+			s = "Ç°Àý";
+
 		return s;
 	}
 

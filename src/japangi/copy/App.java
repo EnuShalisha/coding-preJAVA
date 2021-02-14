@@ -1,4 +1,4 @@
-package japangi;
+package japangi.copy;
 
 public class App {
 
@@ -8,3 +8,4 @@ public class App {
 	}
 
 }
+ 

@@ -1,4 +1,4 @@
-package japangi;
+package japangi.copy;
 
 import java.util.List;
 //stock

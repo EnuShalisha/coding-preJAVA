@@ -1,4 +1,4 @@
-package japangi;
+package japangi.copy;
 
 //¡§¡÷»Ò
 public class Money {

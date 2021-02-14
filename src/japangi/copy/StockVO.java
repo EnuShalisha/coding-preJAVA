@@ -1,4 +1,4 @@
-package japangi;
+package japangi.copy;
 
 //È²¼ºÈ£
 public class StockVO {

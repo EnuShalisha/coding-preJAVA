@@ -1,4 +1,4 @@
-package japangi;
+package japangi.copy;
 
 import java.io.IOException;
 import java.util.InputMismatchException;
@@ -18,13 +18,13 @@ public class JapangiUI {
 		while (true) {
 			try {
 				do {
-					System.out.println("1.음료거래 2.거래내역 3.현금투입 4.잔돈반환 5.판매현황");
-					System.out.println("6.재고등록 7.재고수정 8.재고삭제 9.판매자 잔돈채우기 10.종료");
+					System.out.println("1.음료거래 2.거래내역 3.잔돈반환 4.판매현황");
+					System.out.println("5.재고등록 6.재고수정 7.재고삭제 8.판매자 잔돈채우기 9.종료");
 					System.out.print("=>");
 					ch = sc.nextInt();
-				} while (ch < 1 || ch > 10);
+				} while (ch < 1 || ch > 9);
 
-				if (ch == 10) {
+				if (ch == 9) {
 					sc.close();
 					System.exit(0);
 				}
@@ -35,19 +35,17 @@ public class JapangiUI {
 	            case 2:
 	               dealinglist();break;
 	            case 3:
-	               insertcustomchange();break;
+	            	returnchange();break;
 	            case 4:
-	               returnchange();break;
+	            	dealingstatus();break;
 	            case 5:
-	               dealingstatus();break;
+	            	insertstock();break;
 	            case 6:
-	               insertstock();break;
+	            	modifystock();break;
 	            case 7:
-	               modifystock();break;
+	            	deletestock();break;
 	            case 8:
-	               deletestock();break;
-	            case 9:
-	               insertchange();break;
+	            	insertchange();break;
 	            }
 				sc.nextLine();
 			} catch (InputMismatchException e) {
@@ -115,32 +113,24 @@ public class JapangiUI {
 				cardnumber = dealing.validnumber(sc.next());
 			}
 			aa: while (true) {
-				System.out.println("원하시는 항목을 선택하세요.");
-				stock.selectMenu();
 
 				int other = stock.listStock().size() + 1;
 
 				if (by == 1) {// 현금 투입
-					System.out.println(other + ". 추가투입" +"\t"+ (other + 1) + ".종료");
+					insertcustomchange();
+					showMenu();
+					System.out.println((other-1)+other+ ".종료");
 
 				} else {// 카드
-					System.out.println((other + 1) + ".종료");
+					System.out.println("원하시는 항목을 선택하세요.");
+					stock.selectMenu();
+
+					System.out.println(other + ".종료");
 				}
 
 				int n = sc.nextInt();
 
-				if (n == other) {
-					if (by == 2) {
-						System.out.println("잘못 입력하셨습니다.");
-						continue aa;
-					}
-					insertcustomchange();
-					showMenu();
-					System.out.println("투입금액: "+change+"원");
-					continue aa;
-				}
-
-				else if (n == (other + 1))
+				if (n == other)
 					return;
 
 				else if (n < other && n > 0) {
@@ -209,7 +199,7 @@ public class JapangiUI {
 			listsc[3] = sc.nextInt();
 			System.out.println("10원");
 			listsc[4] = sc.nextInt();
-			change += money.inputcustomchange(listsc);
+			change = money.inputcustomchange(listsc);
 		} catch (InputMismatchException e) {
 			System.out.println("정수만 입력 가능합니다.");
 		} catch (Exception e) {

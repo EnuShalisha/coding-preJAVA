@@ -1,4 +1,4 @@
-package japangi;
+package japangi.copy;
 
 //°í¿©¿ï
 public class DealingVO extends StockVO {
