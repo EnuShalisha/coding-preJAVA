@@ -1,5 +1,7 @@
 package member;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,5 +41,24 @@ public class MemberImpl implements Member {
 	@Override // 4
 	public List<MemberVO> listMember() {
 		return list;
+	}
+	
+	public boolean SaveMember(MemberVO vo) {
+		String pathname="ex.txt";
+		
+		if(vo==null)
+			return false;
+		try(BufferedWriter bw=new BufferedWriter(new FileWriter("test.txt"))) {
+			bw.write(vo.getId()+"\n");
+			bw.write(vo.getPwd()+"\n");
+			bw.write(vo.getName()+"\n");
+			bw.write(vo.getTel());
+			
+			System.out.println("저장 완료");
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return true;
 	}
 }
