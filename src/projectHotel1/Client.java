@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Client {
 	private Map<Integer, ClientVO> list = new LinkedHashMap<>();
-	private int clientNo=4;
+	private int clientno=4;
 	
 	public Client() {
 		initialize();
@@ -24,9 +24,9 @@ public class Client {
 		list.put(4, vo4);
 	}
 	
-	public ClientVO checkClient(int clientNum) {
-		if(list.containsKey(clientNum))
-			return list.get(clientNum);
+	public ClientVO checkClient(int clientno) {
+		if(list.containsKey(clientno))
+			return list.get(clientno);
 		return null;
 	}
 	
@@ -44,9 +44,9 @@ public class Client {
 	}
 	
 	public int inputInfo(ClientVO vo) {
-		clientNo++;
-		list.put(clientNo, vo);
-		return clientNo;
+		clientno++;
+		list.put(clientno, vo);
+		return clientno;
 	}
 	
 	

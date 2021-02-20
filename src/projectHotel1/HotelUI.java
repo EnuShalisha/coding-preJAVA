@@ -6,6 +6,7 @@ import java.util.Comparator;
 
 public class HotelUI {
 	private BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	private Reservation rsrv= new Reservation();
 	
 	public void hotelmanage() {
 		int ch;
@@ -52,6 +53,22 @@ public class HotelUI {
 		System.out.println("등급: ");
 		System.out.println("가격: ");
 		System.out.println("투숙인원: ");
+		
+	}
+	
+	public void checkRoomlist() {
+		System.out.println("\n[일자별 객실 조회]");
+		System.out.println("조회하고자 하는 일자를 입력하십시오.");
+		try {
+			System.out.println("월[MM]");
+			String mm=br.readLine();
+			System.out.println("일[dd]");
+			String dd=br.readLine();
+			String day="2021-"+mm+"-"+dd;
+			rsrv.showRoomlist(day);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 	}
 	

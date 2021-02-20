@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class CustomerUI {
 	private BufferedReader br  = new BufferedReader(new InputStreamReader(System.in));
 	private Client client = new Client();
-	private Room2 room = new Room2();
+	private RoomImpl room = new RoomImpl();
 	private Reservation reservation = new Reservation();
 	
 	public void menu() {
@@ -179,15 +179,14 @@ public class CustomerUI {
 	
 	public void resevationCheck() {
 		//예약정보확인 누르면
-		String name;
 		try {
 			System.out.println("예약 정보를 확인해드리겠습니다.");
-			System.out.println();
 			System.out.print("고객님의 성함을 입력해 주세요\n");
-			name = br.readLine();//예외
+			String name = br.readLine(); // 예외 - 여긴 문자열이라 예외 적용 못해 ㅋㅋㅋ
 
 			System.out.println("고객님의 예약번호를 입력해 주세요.\n");
-			String reserveNum = br.readLine();//예외
+			int reserveno = Integer.parseInt(br.readLine());//예외 - 여기는 정수라 InputMismatchException 들어갈거고
+			
 			
 			System.out.println();
 			System.out.println("(cname + ) 고객님의 정보를 받고 있습니다.\n");

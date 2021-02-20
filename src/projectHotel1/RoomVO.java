@@ -2,26 +2,30 @@ package projectHotel1;
 
 public class RoomVO {
 
-	private String number;
+	private int number;
 	private int floor;
 	private int price;
 	private String grade;
 	private int peoplenum;
+	private int maxnum;
 	
 	// private boolean stay;
 	
-	public RoomVO(String grade, int price, int floor, String number, int peoplenum) {
+	public RoomVO() {}
+	
+	public RoomVO(String grade, int price, int floor, int number, int peoplenum, int maxnum) {
 		this.grade = grade;
 		this.price = price;
 		this.floor = floor;
 		this.number = number;
 		this.peoplenum = peoplenum;
+		this.maxnum = maxnum;
 	}
 	
-	public String getNumber() {
+	public int getNumber() {
 		return number;
 	}
-	public void setNumber(String number) {
+	public void setNumber(int number) {
 		this.number = number;
 	}
 	public int getFloor() {
@@ -48,10 +52,19 @@ public class RoomVO {
 	public void setPeoplenum(int peoplenum) {
 		this.peoplenum = peoplenum;
 	}
+	
+
+	public int getMaxnum() {
+		return maxnum;
+	}
+
+	public void setMaxnum(int maxnum) {
+		this.maxnum = maxnum;
+	}
 
 	@Override
 	public String toString() {
-		if(number==null)
+		if(number==0)
 			return null;
 		
 		String s=number+"\t"+floor+"\t"+price+"\t"+grade+"\t"+peoplenum;
