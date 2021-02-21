@@ -3,11 +3,13 @@ package projectHotel1;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Date;
 
 public class CustomerUI {
 	private BufferedReader br  = new BufferedReader(new InputStreamReader(System.in));
 	private Client client = new Client();
 	private RoomImpl room = new RoomImpl();
+	//private Money money = new Money();
 	private Reservation reservation = new Reservation();
 	
 	public void menu() {
@@ -15,10 +17,14 @@ public class CustomerUI {
 		
 		while(true) {
 			try {
+				
+				
 				do {
 					System.out.println("1.객실예약 2.예약수정 3.예약취소 4.예약정보확인 5. 예약정보인쇄 6.나가기");
 					ch=Integer.parseInt(br.readLine());
 				}while(ch<1||ch>6);
+				
+				
 				
 				if(ch==6) {
 					return;
@@ -43,69 +49,102 @@ public class CustomerUI {
 	
 	try {
 		System.out.println("고객번호가 있으면 입력, 없으면 0을 입력하십시오.");
-		ClientVO vo=client.checkClient(Integer.parseInt(readLine()));
-		if(vo==null) {
-			
+		int clientno = Integer.parseInt(br.readLine());
+		ClientVO vo=client.checkClient(clientno); // 고객번호 존재 확인 메소드 - 존재하면 vo로 리턴
+		if(vo==null) { // 존재하면 else로, 없으면 고객 생성
+			vo=new ClientVO();
 			System.out.println("이름?");
 			vo.setName(br.readLine());
-			
 			System.out.println("지역?");
 			vo.setRegion(br.readLine());
-			
 			System.out.println("성별?(M/F)");
 			vo.setGender(client.verifyGender(br.readLine()));
-			
 			System.out.println("나이?");
 			vo.setAge(Integer.parseInt(br.readLine()));
 			
-			
-			int clientNo=client.inputInfo(vo); // 고객 정보 저장 메소드
-			
-			System.out.println("고객님의 고객번호는"+clientNo+"입니다.");
+			clientno=client.inputInfo(vo); // 고객 정보 저장 메소드
+			System.out.println("고객님의 고객번호는 "+clientno+"입니다.");
 		}
 		else {
-			System.out.println(vo.getName()+"고객님 환영합니다.");	
+			System.out.println(vo.getName()+" 고객님 환영합니다.");	
 		}
-
+		
 		System.out.println("투숙하시는 인원은 몇명입니까?");
 		int clientnum=Integer.parseInt(br.readLine());
-		reservation.verifyClientnum(clientnum);
+		room.verifyClientnum(clientnum); // 투숙인원이 음수, 또는 최대 인원 초과인지 확인
 		
-		System.out.println("방은 다음과 같이 준비돼있습니다.");
-		System.out.println("스위트: 기본 투숙인원 4명, 최대 투숙인원 6명");
-		System.out.println("그랜드: 기본 투숙인원 3명, 최대 투숙인원 5명");
-		System.out.println("디럭스: 기본 투숙인원 2명, 최대 투숙인원 4명");
-		
-		//위 메소드에서는 다음의 경우들에 대해 sysout을 한다.
-		//1. 모든 방의 최대 투숙객보다 많은 경우 "저희 호텔에는 x명을 수용할 수 없습니다. 인원을 나누어 예약을 진행해주십시오."
-		//2. 6명인 경우 "고객님께서 이용 가능하신 방은 스위트입니다."
-		//3. 5명인 경우 "디럭스, 스위트"
-		//4. 등등등) 
-		
-		System.out.println("어떤 방을 선택하시겠습니까?");
-		System.out.println("1. 스위트 2. 디럭스 3. 스탠다드");
-		int grade=Integer.parseInt(br.readLine());
-	//	RoomVO room=reservation.priceinfo(grade, clientnum);
-		//위 메소드에서는 방 등급과 투숙객을 파라미터로 받아서 다음을 sout한다.
-		//1. 잘못 입력했을 경우 "잘못 선택하셨습니다."
-		//2. 입력이 맞을 경우 "귀하의 객실 등급은 room.getgrade(), 추가 투숙인원 room.getaddnum()명으로 총 가격은 room.revenue()입니다.
-		System.out.println("입력한 정보가 맞습니까?[Y/N]");
-		/*
-		if(br.readLine()n||N) {
-			System.out.println("예약이 취소되었습니다.");
-			System.out.println("초기화면으로 돌아갑니다.");
+		String grade=null;
+		int chooseroom=0;
+		room.chooseRoom(clientnum); // 방 리스트(인원수에 따라 리스트가 다름) 보여줌 
+		while(true) { 
+		try {
+			System.out.print("선택: ");
+			chooseroom=Integer.parseInt(br.readLine());
+			if(chooseroom==1) return; //1번은 예약취소이므로 리턴,
+			grade=room.verifychooseRoom(clientnum, chooseroom-2); // 방을 잘못 선택하진 않았는지 다시한번 확인
+			break; // 방 제대로 고르기 전까지 계속 방 선택
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			}
 		}
-		System.out.println("예약정보는 다음과 같습니다.");
-		reservation.find(room); //손님-4 예약정보 확인 메소드 그대로 키기
-		System.out.println("예약하시겠습니까?[Y/N]");
-		if(br.readLine()n||N) {
-			System.out.println("에약이 취소되었습니다.");
-			System.out.println("초기화면으로 돌아갑니다.");
+		
+		int price=room.setRoomprice(clientnum, chooseroom-2); // 객실 요금 산정 메소드
+		System.out.println("객실 요금은"+price+"원입니다.");
+		
+		Date start=null;
+		Date end=null;
+		while(true) {
+		try {
+			System.out.println("투숙하시는 날짜를 선택하십시오.");
+			System.out.println("체크인 날짜: ");
+			System.out.print("월: ");
+			String st_mm=br.readLine();
+			System.out.print("일: ");
+			String st_dd=br.readLine();
+			String st="2021-"+st_mm+"-"+st_dd;
+			start = reservation.verifyDate(st); // 날짜가 제대로 리턴되는지 확인 - 근데 월일 엄청 크게적어도 다 넘겨주니까(ex. 13월 -> +1년 1월) 수정 필요할듯
+			
+			System.out.println();
+			System.out.println("체크아웃 날짜: ");
+			System.out.print("월: ");
+			String ed_mm=br.readLine();
+			System.out.print("일: ");
+			String ed_dd=br.readLine();
+			String ed="2021-"+ed_mm+"-"+ed_dd;
+			end = reservation.verifyDate(ed); // 위와 동일
+			
+			reservation.verifyBetweenDate(start, end); // 날짜가 똑같으면 대실 안됨으로 반환, 시작날짜보다 끝날짜 늦으면 예외발생
+			break;
+		} catch (Exception e) {
+			System.out.println(e.getMessage()); // 예외 뜨면 예약 종료할건지 여기서 물어봄
+			System.out.println("예약을 종료하시겠습니까?[Y/N]");
+			String s= br.readLine();
+			if(s.equals("Y")||s.equals("y"))
+				return;
 		}
-		*/
-		System.out.println("예약이 완료되었습니다.");
+		}
+		
+		//new ReservationVO 넣는거 디따 중요함 특히 예약 수정 구현하는사람
+		//예약 리스트가 이미 만들어진 뒤에 예약 수정하면 하나 할때마다 vo에 즉시 반영돼
+		//rvotemp같은걸 new로 하나 만들고 마지막에 vo=rvotemp로 vo에 대입해줘
+		ReservationVO rvotemp = new ReservationVO(clientno, 0, clientnum, start, end, vo.getName(), price, grade); 
+		reservation.checkAvaliable(rvotemp); // 객실 확인 메소드
+		
+		System.out.println("다음의 정보로 예약하시겠습니까?[Y/N]");
+		System.out.println("고객번호\t고객이름\t투숙인수\t체크인\t\t체크아웃");
+		System.out.println("방번호\t등급\t가격");
+		System.out.println("===========================================");
+		reservation.showListfromVO(rvotemp);//위에 양식대로 정보 띄워주는거임
+		String a=br.readLine(); // Y,y면 예약완료, 그 외엔 예약 취소
+		if(a.equals("Y")||a.equals("y")) {
+			int rsrvno=reservation.inputInfo(rvotemp);
+			System.out.println("예약이 완료되었습니다.");
+			System.out.println("고객님의 예약번호는 "+rsrvno+"번입니다.");
+		}
+		return;
 	} catch (Exception e) {
-		// TODO: handle exception
+		System.out.println(e.getMessage());
+		System.out.println("초기 화면으로 돌아갑니다.");
 	}
 	
 	

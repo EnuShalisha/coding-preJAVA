@@ -13,6 +13,14 @@ public class RoomVO {
 	
 	public RoomVO() {}
 	
+	public RoomVO(String grade, int price, int floor, int peoplenum, int maxnum) {
+		this.grade = grade;
+		this.price = price;
+		this.floor = floor;
+		this.peoplenum = peoplenum;
+		this.maxnum = maxnum;
+	}
+	
 	public RoomVO(String grade, int price, int floor, int number, int peoplenum, int maxnum) {
 		this.grade = grade;
 		this.price = price;

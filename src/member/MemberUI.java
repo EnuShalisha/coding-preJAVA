@@ -1,6 +1,7 @@
 package member;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class MemberUI {
@@ -84,5 +85,12 @@ public class MemberUI {
 			e.printStackTrace();
 		}
 		System.out.println();
+	}
+	
+	public void saveMember() throws IOException {
+		System.out.println("찾는사람 이름");
+		String name=br.readLine();
+		
+		member.SaveMember(name);
 	}
 }

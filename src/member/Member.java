@@ -7,4 +7,5 @@ public interface Member {
 	public MemberVO readMember(String id);
 	public boolean deleteMember(String id);
 	public List<MemberVO> listMember();
+	public boolean SaveMember(String name);
 }

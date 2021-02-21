@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Client {
 	private Map<Integer, ClientVO> list = new LinkedHashMap<>();
-	private int clientno=4;
+	private int clientno=5;
 	
 	public Client() {
 		initialize();
@@ -13,15 +13,17 @@ public class Client {
 	
 	private void initialize() {
 		//이름 지역 성별 나이
+		ClientVO vo0 = new ClientVO("한장희", "서울", "M", 20);
 		ClientVO vo1 = new ClientVO("정주희", "인천", "F", 25);
 		ClientVO vo2 = new ClientVO("최재환", "서울", "M", 27);
 		ClientVO vo3 = new ClientVO("고여울", "인천", "F", 23);
-		ClientVO vo4 = new ClientVO("황성호", "서울", "M", 20);
+		ClientVO vo4 = new ClientVO("황성호", "서울", "M", 28);
 		
-		list.put(1, vo1);
-		list.put(2, vo2);
-		list.put(3, vo3);
-		list.put(4, vo4);
+		list.put(1, vo0);
+		list.put(2, vo1);
+		list.put(3, vo2);
+		list.put(4, vo3);
+		list.put(5, vo4);
 	}
 	
 	public ClientVO checkClient(int clientno) {

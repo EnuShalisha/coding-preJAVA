@@ -1,5 +1,6 @@
 package member;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ public class MainUI {
 	private GuestUI guestUI = new GuestUI(member, login);
 	private MemberUI memberUI = new MemberUI(member, login);
 
-	public void menu() {
+	public void menu() throws IOException {
 		while(true) {
 			if(login.getLoginMember()==null) {
 				menuGuest();
@@ -44,15 +45,15 @@ public class MainUI {
 		}
 	}
 	
-	private void menuMember() {
+	private void menuMember() throws IOException {
 		try {
 			int ch;
 			
 			System.out.print("["+login.getLoginMember().getName()+"] ´Ô");
 			do {
-				System.out.print("1.Á¤º¸¼öÁ¤ 2.È¸¿ø°Ë»ö 3.·Î±×¾Æ¿ô 4.È¸¿øÅ»Åð 5.¸®½ºÆ® => ");
+				System.out.print("1.Á¤º¸¼öÁ¤ 2.È¸¿ø°Ë»ö 3.·Î±×¾Æ¿ô 4.È¸¿øÅ»Åð 5.¸®½ºÆ® 6. ÀÎ¼â => ");
 				ch = sc.nextInt();
-			} while(ch<1 || ch>5);
+			} while(ch<1 || ch>6);
 			
 			switch(ch) {
 			case 1: memberUI.update(); break;
@@ -60,6 +61,7 @@ public class MainUI {
 			case 3: login.logout(); System.out.println(); break;
 			case 4: memberUI.delete(); break;
 			case 5: memberUI.listAll(); break;
+			case 6: memberUI.saveMember(); break;
 			}
 			
 		} catch (InputMismatchException e) {
