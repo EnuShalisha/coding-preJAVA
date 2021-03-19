@@ -30,7 +30,7 @@ public class Ex03rfl {
 			f1.set(null,  "사랑");
 			System.out.println(f1.get(null));
 			
-			//필듲 ㅓㅂ근
+			//필드 접근
 			Field f2=Book.class.getDeclaredField("subject");
 			f2.setAccessible(true);
 			String s2=(String)f2.get(book2);
